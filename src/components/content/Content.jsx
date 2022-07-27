@@ -5,10 +5,10 @@ import React from "react";
 //Components
 
 // Style
-import {} from "./Content.styled";
+import { ContentWrapper } from "./Content.styled";
 
 const Content = (props) => {
-  return <div>Content</div>;
+  return <ContentWrapper>Content</ContentWrapper>;
 };
 
 export default Content;

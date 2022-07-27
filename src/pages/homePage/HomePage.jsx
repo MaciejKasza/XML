@@ -8,15 +8,15 @@ import Content from "../../components/content/Content";
 import Footer from "../../components/footer/Footer";
 
 // Style
-import {} from "./HomePage.styled";
+import { PageWrapper } from "./HomePage.styled";
 
 const HomePage = (props) => {
   return (
-    <div>
+    <PageWrapper>
       <Header />
       <Content />
       <Footer />
-    </div>
+    </PageWrapper>
   );
 };
 

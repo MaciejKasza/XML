@@ -5,10 +5,10 @@ import React from "react";
 //Components
 
 // Style
-import {} from "./Footer.styled";
+import { FooterWrapper } from "./Footer.styled";
 
 const Footer = (props) => {
-  return <div>Footer</div>;
+  return <FooterWrapper>Created by salesmanago TS team | ©2022</FooterWrapper>;
 };
 
 export default Footer;
