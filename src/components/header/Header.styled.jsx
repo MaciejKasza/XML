@@ -10,7 +10,7 @@ export const StyledHeader = styled.div`
   align-items: center;
   justify-content: center;
   margin: auto;
-  width: 1200px;
+  max-width: 1200px;
 `;
 
 export const StyledImage = styled.img`

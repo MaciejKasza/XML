@@ -7,7 +7,14 @@ export function useStore() {
 }
 
 export function StoreProvider({ children }) {
-  const value = {};
+  const [steps, setSteps] = useState(["active", null, null, null]);
+  const [curretStep, setCurrentStep] = useState(0);
+
+  const nextStep = () => {};
+
+  const prevStep = () => {};
+
+  const value = { steps, nextStep, prevStep };
 
   return (
     <StoreContext.Provider value={value}>{children}</StoreContext.Provider>
