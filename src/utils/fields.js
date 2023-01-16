@@ -1,0 +1,20 @@
+export const SM_FIELDS = [
+  "EXTERNAL_ID",
+  "NAME",
+  "BRAND",
+  "DESCRIPTION",
+  "PRICE",
+  "PRICE_PROMO",
+  "AVABILITY",
+  "BESTSELLER",
+  "CONDITION",
+  "GENDER",
+  "PRODUCT_URL",
+  "IMAGE_URL",
+];
+
+export const XML_STRUCTURE = [
+  "RSS/CHANNEL/ITEM",
+  "PRODUCTS/PRODUCT",
+  "OFFERS/OFFER",
+];

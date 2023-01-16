@@ -19,6 +19,8 @@ const theme = {
   backgroundLight: "#D3D8DB",
   backgroundDark: "#263B4B",
   grey: "#575757",
+
+  // ${(props) => props.theme.primaryColor};
 };
 
 const App = (props) => {
