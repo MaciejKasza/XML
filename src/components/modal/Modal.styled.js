@@ -14,8 +14,8 @@ export const StyledModal = styled.div`
 `;
 
 export const StyledModalContent = styled.div`
-  width: 800px;
-  height: 500px;
+  min-width: 500px;
+
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
   /* Do zmiany kolory */
   background-color: #fff; //

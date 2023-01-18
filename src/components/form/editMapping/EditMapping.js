@@ -1,7 +1,15 @@
 import React from "react";
 import { useState } from "react";
 
-import {} from "./EditMapping.styled";
+import {
+  ControlButtons,
+  Error,
+  Input,
+  Label,
+  NewMappingContainer,
+  OptionsSection,
+  TitleElement,
+} from "./EditMapping.styled";
 import { SM_FIELDS } from "../../../utils/fields";
 
 const EditMapping = ({ field, toogleModal, saveField }) => {
@@ -71,11 +79,11 @@ const EditMapping = ({ field, toogleModal, saveField }) => {
   };
 
   return (
-    <div>
-      <h2>Edit field</h2>
-      <label htmlFor="">
+    <NewMappingContainer>
+      <TitleElement>Edit field</TitleElement>
+      <Label htmlFor="">
         Chosen field in SM:{" "}
-        <input
+        <Input
           type="text"
           placeholder=""
           name="fieldXml"
@@ -84,10 +92,10 @@ const EditMapping = ({ field, toogleModal, saveField }) => {
           value={fieldSm}
           disabled={true}
         />
-      </label>
-      <label htmlFor="">
+      </Label>
+      <Label htmlFor="">
         Field name in XML:
-        <input
+        <Input
           type="text"
           placeholder="Type field name"
           name="fieldXml"
@@ -95,8 +103,8 @@ const EditMapping = ({ field, toogleModal, saveField }) => {
           onChange={handleInputChange}
           value={fieldXml}
         />
-      </label>
-      <div className="options">
+      </Label>
+      <OptionsSection className="options">
         {/* brand, newProd, bestseller ---> kiedy true */}
         {fieldSm === "CONDITION" ||
         fieldSm === "BESTSELLER" ||
@@ -106,7 +114,7 @@ const EditMapping = ({ field, toogleModal, saveField }) => {
             <h3>Additional field options</h3>
             <label htmlFor="">
               True value:
-              <input
+              <Input
                 type="text"
                 placeholder="Value"
                 name="trueValue"
@@ -123,7 +131,7 @@ const EditMapping = ({ field, toogleModal, saveField }) => {
             <h3>Additional field options</h3>
             <label htmlFor="">
               Currency:
-              <input
+              <Input
                 type="text"
                 placeholder="Value"
                 name="currency"
@@ -140,7 +148,7 @@ const EditMapping = ({ field, toogleModal, saveField }) => {
             <h3>Additional field options</h3>
             <label htmlFor="">
               Remove UTM:
-              <input
+              <Input
                 type="checkBox"
                 name="utm"
                 id="utm"
@@ -150,8 +158,8 @@ const EditMapping = ({ field, toogleModal, saveField }) => {
             </label>
           </>
         ) : null}
-      </div>
-      <div className="errors">
+      </OptionsSection>
+      <Error className="errors">
         {errors.length > 0
           ? errors.map((item, index) => (
               <p className="error" key={index}>
@@ -159,12 +167,12 @@ const EditMapping = ({ field, toogleModal, saveField }) => {
               </p>
             ))
           : null}
-      </div>
-      <div className="control_section">
+      </Error>
+      <ControlButtons className="control_section">
         <button onClick={handleCloseClick}>Close</button>
         <button onClick={handleSaveClick}>Save</button>
-      </div>
-    </div>
+      </ControlButtons>
+    </NewMappingContainer>
   );
 };
 

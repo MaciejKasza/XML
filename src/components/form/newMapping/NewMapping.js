@@ -1,7 +1,16 @@
 import React from "react";
 import { useState } from "react";
 
-import {} from "./NewMapping.styled";
+import {
+  ControlButtons,
+  Error,
+  Input,
+  Label,
+  NewMappingContainer,
+  OptionsSection,
+  Select,
+  TitleElement,
+} from "./NewMapping.styled";
 import { SM_FIELDS } from "../../../utils/fields";
 
 const NewMapping = ({ formFields, toogleModal, addField }) => {
@@ -86,11 +95,11 @@ const NewMapping = ({ formFields, toogleModal, addField }) => {
   };
 
   return (
-    <div>
-      <h2>Add new field</h2>
-      <label htmlFor="">
+    <NewMappingContainer>
+      <TitleElement>Add new field</TitleElement>
+      <Label htmlFor="">
         Chose field in SM
-        <select
+        <Select
           name="smFields"
           id="smFields"
           onChange={handleSelectChange}
@@ -100,11 +109,11 @@ const NewMapping = ({ formFields, toogleModal, addField }) => {
             Select field
           </option>
           {availableOptions}
-        </select>
-      </label>
-      <label htmlFor="">
+        </Select>
+      </Label>
+      <Label htmlFor="">
         Field name in XML
-        <input
+        <Input
           type="text"
           placeholder="Type field name"
           name="fieldXml"
@@ -112,8 +121,8 @@ const NewMapping = ({ formFields, toogleModal, addField }) => {
           onChange={handleInputChange}
           value={fieldXml}
         />
-      </label>
-      <div className="options">
+      </Label>
+      <OptionsSection className="options">
         {/* brand, newProd, bestseller ---> kiedy true */}
         {fieldSm === "CONDITION" ||
         fieldSm === "BESTSELLER" ||
@@ -122,8 +131,8 @@ const NewMapping = ({ formFields, toogleModal, addField }) => {
           <>
             <h3>Additional field options</h3>
             <label htmlFor="">
-              True value:
-              <input
+              True value
+              <Input
                 type="text"
                 placeholder="Value"
                 name="trueValue"
@@ -139,8 +148,8 @@ const NewMapping = ({ formFields, toogleModal, addField }) => {
           <>
             <h3>Additional field options</h3>
             <label htmlFor="">
-              Currency:
-              <input
+              Currency
+              <Input
                 type="text"
                 placeholder="Value"
                 name="currency"
@@ -157,8 +166,8 @@ const NewMapping = ({ formFields, toogleModal, addField }) => {
           <>
             <h3>Additional field options</h3>
             <label htmlFor="">
-              Remove UTM:
-              <input
+              Remove UTM
+              <Input
                 type="checkBox"
                 name="utm"
                 id="utm"
@@ -168,8 +177,8 @@ const NewMapping = ({ formFields, toogleModal, addField }) => {
             </label>
           </>
         ) : null}
-      </div>
-      <div className="errors">
+      </OptionsSection>
+      <Error className="errors">
         {errors.length > 0
           ? errors.map((item, index) => (
               <p className="error" key={index}>
@@ -177,12 +186,14 @@ const NewMapping = ({ formFields, toogleModal, addField }) => {
               </p>
             ))
           : null}
-      </div>
-      <div className="control_section">
-        <button onClick={handleCloseClick}>Close</button>
+      </Error>
+      <ControlButtons className="control_section">
+        <button className="dark" onClick={handleCloseClick}>
+          Close
+        </button>
         <button onClick={handleSaveClick}>Save</button>
-      </div>
-    </div>
+      </ControlButtons>
+    </NewMappingContainer>
   );
 };
 
