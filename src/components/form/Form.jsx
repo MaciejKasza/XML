@@ -18,6 +18,7 @@ import {
   StyledControls,
   StyledCreateButton,
 } from "./Form.styled";
+import { getTransform } from "../../utils/functions";
 
 const Form = (props) => {
   const [showModal, setShowModal] = useState(false);
@@ -26,11 +27,6 @@ const Form = (props) => {
     {
       name: "EXTERNAL_ID",
       value: "g:id",
-      options: { trueValue: "", currency: "", removeUTM: "" },
-    },
-    {
-      name: "NAME",
-      value: "g:name",
       options: { trueValue: "", currency: "", removeUTM: "" },
     },
   ]);
@@ -72,6 +68,7 @@ const Form = (props) => {
       mapping: formFields,
     };
     console.log(transformData);
+    getTransform(transformData);
   };
 
   let fieldsToRender = formFields.map((field, index) => (
