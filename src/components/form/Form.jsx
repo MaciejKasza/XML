@@ -9,19 +9,21 @@ import Modal from "../modal/Modal";
 import Row from "./row/Row";
 import NewMapping from "./newMapping/NewMapping";
 import XmlStructurePicker from "./xmlStructurePicker/XmlStructurePicker";
-import { BsFillPlusCircleFill } from "react-icons/bs";
 
 // Style
 import {
   StyledForm,
   StyledAddButton,
-  StyledControls,
   StyledCreateButton,
+  StyledResetButton,
+  StyledContorlButtonsContainer,
 } from "./Form.styled";
 import { getTransform } from "../../utils/functions";
+import LoadingSpinner from "../spinner/LoadingSpinner";
 
-const Form = (props) => {
+const Form = ({ showTransform, setShowTranform, transform, setTransform }) => {
   const [showModal, setShowModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [xmlStructure, setXmlStructure] = useState("");
   const [formFields, setFormFields] = useState([
     {
@@ -60,15 +62,34 @@ const Form = (props) => {
     // console.log("Open modal");
   };
 
-  const createTranform = () => {
-    console.log("createTranform");
-    //Create json to send
+  const resetForm = () => {
+    setFormFields([
+      {
+        name: "EXTERNAL_ID",
+        value: "g:id",
+        options: { trueValue: "", currency: "", removeUTM: "" },
+      },
+    ]);
+  };
+
+  const createTranform = async () => {
     const transformData = {
       structure: xmlStructure,
       mapping: formFields,
     };
-    console.log(transformData);
-    getTransform(transformData);
+
+    setIsLoading(true);
+    try {
+      const result = await getTransform(transformData);
+      console.log(result);
+      console.log(showTransform, transform);
+      setTransform(result);
+      setShowTranform(true);
+    } catch (error) {
+      console.log("Something went wrong!");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   let fieldsToRender = formFields.map((field, index) => (
@@ -77,23 +98,33 @@ const Form = (props) => {
 
   // console.log(formFields, fieldsToRender);
   return (
-    <StyledForm>
-      <XmlStructurePicker choseXmlStructure={choseXmlStructure} />
-      {fieldsToRender}
-      {formFields.length < SM_FIELDS.length ? (
-        <AddButton toogleModal={toogleModal} />
-      ) : null}
-      <StyledCreateButton onClick={createTranform}>
-        Create transform
-      </StyledCreateButton>
-      <Modal showModal={showModal} setShowModal={setShowModal}>
-        <NewMapping
-          formFields={formFields}
-          toogleModal={toogleModal}
-          addField={addField}
-        />
-      </Modal>
-    </StyledForm>
+    <>
+      {!showTransform && (
+        <StyledForm>
+          <XmlStructurePicker choseXmlStructure={choseXmlStructure} />
+          {fieldsToRender}
+          {formFields.length < SM_FIELDS.length ? (
+            <AddButton toogleModal={toogleModal} />
+          ) : null}
+          <StyledContorlButtonsContainer>
+            <StyledResetButton onClick={resetForm}>
+              Reset mapping
+            </StyledResetButton>
+            <StyledCreateButton onClick={createTranform}>
+              Create transform
+            </StyledCreateButton>
+          </StyledContorlButtonsContainer>
+          <Modal showModal={showModal} setShowModal={setShowModal}>
+            <NewMapping
+              formFields={formFields}
+              toogleModal={toogleModal}
+              addField={addField}
+            />
+          </Modal>
+          {isLoading && <LoadingSpinner />}
+        </StyledForm>
+      )}
+    </>
   );
 };
 

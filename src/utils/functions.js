@@ -1,15 +1,12 @@
-import { getTranform } from "../components/app/api/tranformRequest";
+import { getTranform } from "../api/tranformRequest";
 import { API_FIELDS } from "./fields";
 
-export function getTransform(data) {
+export async function getTransform(data) {
   const { mapping, structure } = data;
   //Twroznie jsona potrzebengo do API
 
   let finalMapping = API_FIELDS;
-  //   console.log("final:", finalMapping);
-  //   console.log("mapping:", mapping);
 
-  //   finalMapping.Fields.map((field) => console.log("field"));
   mapping.forEach((item) => {
     switch (item.name) {
       case "EXTERNAL_ID":
@@ -115,8 +112,11 @@ export function getTransform(data) {
     }
   });
 
-  //   console.log(Object.keys(finalMapping.Fields));
-  console.log(finalMapping.Fields);
+  finalMapping.Mapping.mapping = structure;
+  finalMapping.MatchFields.customMatchLine = structure;
+  finalMapping.CutFields.customCutLine = "";
+
+  console.log(finalMapping);
 
   //Wysłanie requste i zwórcenie statusu i informacji czy jest git
   return getTranform(finalMapping);

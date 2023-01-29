@@ -6,7 +6,7 @@ export const StyledRow = styled.div`
   align-items: center;
   margin: 5px 0;
   padding: 10px;
-  border: 2px dashed ${(props) => props.theme.backgroundDark};
+  border: 2px solid ${(props) => props.theme.backgroundDark};
   border-radius: 15px;
 `;
 

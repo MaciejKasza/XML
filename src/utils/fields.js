@@ -76,12 +76,12 @@ export const API_FIELDS = {
     intDetail3: "UNDEFINED",
   },
   Mapping: {
-    mapping: "UNDEFINED",
+    mapping: "",
   },
   CutFields: {
-    customCutLine: "UNDEFINED",
+    customCutLine: "",
   },
   MatchFields: {
-    customMatchLine: "UNDEFINED",
+    customMatchLine: "",
   },
 };

@@ -20,7 +20,7 @@ export const StyledAddButton = styled.button`
   height: 40px;
   font-size: 38px;
 
-  border: 2px dashed ${(props) => props.theme.primaryColor};
+  border: 1px solid ${(props) => props.theme.primaryColor};
   color: ${(props) => props.theme.primaryColor};
   border-radius: 50%;
   overflow: hidden;
@@ -40,7 +40,42 @@ export const StyledCreateButton = styled.button`
   border: none;
   background: none;
 
-  margin: 5px 0 5px auto;
+  /* margin: 5px 0 5px auto; */
+  padding: 10px 15px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: ${(props) => props.theme.green};
+  color: ${(props) => props.theme.backgroundDark};
+  border-radius: 5px;
+  border: 2px solid ${(props) => props.theme.green};
+  font-weight: bold;
+
+  cursor: pointer;
+
+  &:hover {
+    color: ${(props) => props.theme.backgroundDark};
+    font-weight: bold;
+    border: 2px solid ${(props) => props.theme.backgroundDark};
+  }
+`;
+
+export const StyledContorlButtonsContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  align-items: center;
+  width: 100%;
+`;
+
+export const StyledResetButton = styled.button`
+  outline: none;
+  border: none;
+  background: none;
+
+  /* margin: 5px 0 5px auto; */
   padding: 10px 15px;
 
   display: flex;
