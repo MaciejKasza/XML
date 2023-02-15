@@ -34,7 +34,7 @@ const Transform = ({
     <TransformWrapper>
       <h2>Your transform</h2>
       <TransformContent>
-        <textarea
+        {/* <textarea
           ref={textAreaRef}
           name="transform"
           id="transform"
@@ -42,9 +42,13 @@ const Transform = ({
           rows="10"
           value={areaText}
           onChange={handleTextAreaChange}
-        >
-          {JSON.stringify(transform)}
-        </textarea>
+          disabled={true}
+        > */}
+        {/* {JSON.stringify(transform)}
+         */}
+        {/* {transform} */}
+        {/* </textarea> */}
+        <pre>{transform}</pre>
       </TransformContent>
       <TransformNavigation>
         <button onClick={handleBackClick}>Back</button>

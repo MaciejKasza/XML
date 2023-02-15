@@ -113,7 +113,7 @@ export async function getTransform(data) {
   });
 
   finalMapping.Mapping.mapping = structure;
-  finalMapping.MatchFields.customMatchLine = structure;
+  finalMapping.MatchFields.customMatchLine = "";
   finalMapping.CutFields.customCutLine = "";
 
   console.log(finalMapping);
