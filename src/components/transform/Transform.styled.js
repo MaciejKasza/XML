@@ -12,10 +12,25 @@ export const TransformWrapper = styled.div`
 `;
 
 export const TransformContent = styled.div`
-  & textarea {
-    width: 600px;
-    max-width: 600px;
+  div.transform {
+    background-color: rgb(241, 241, 241);
     height: 600px;
+    width: 600px;
+    overflow-y: scroll;
+
+    pre {
+      padding: 10px;
+      white-space: pre;
+    }
+  }
+
+  div.error {
+    min-height: 600px;
+    min-width: 600px;
+    text-align: center;
+    p {
+      color: red;
+    }
   }
 `;
 

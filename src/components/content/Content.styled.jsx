@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const ContentWrapper = styled.div`
   flex-grow: 1;
   margin: 0 auto;
+  padding-bottom: 20px;
 `;
 
 export const StyledContent = styled.div`

@@ -1,4 +1,4 @@
-const API_URL = "https://maluch.mikr.us:40006/createFile";
+const API_URL = "http://maluch.mikr.us:40006/createFile";
 
 export async function getTranform(mapping) {
   //symulacjia uderzenia do API
@@ -12,7 +12,6 @@ export async function getTranform(mapping) {
         "Content-Type": "application/json; charset=utf8",
       },
       body: JSON.stringify(mapping),
-      referrerPolicy: "unsafe_url",
     });
     // console.log(response);
 

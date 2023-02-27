@@ -83,7 +83,8 @@ const Form = ({ showTransform, setShowTranform, transform, setTransform }) => {
       const result = await getTransform(transformData);
       // console.log(result);
       // console.log(showTransform, transform);
-      setTransform(result.data);
+      console.log(result);
+      setTransform(result);
       setShowTranform(true);
     } catch (error) {
       console.log("Something went wrong!");

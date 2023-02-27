@@ -13,7 +13,7 @@ const Transform = ({
   transform,
   setTransform,
 }) => {
-  const [areaText, setAreaText] = useState(JSON.stringify(transform));
+  const [areaText, setAreaText] = useState(JSON.stringify(transform.data));
   const textAreaRef = useRef(null);
 
   const handleTextAreaChange = (e) => {
@@ -21,9 +21,10 @@ const Transform = ({
   };
 
   const handleCopyClick = (e) => {
-    textAreaRef.current.select();
-    document.execCommand("copy");
-    e.target.focus();
+    navigator.clipboard.writeText(textAreaRef.current.innerText);
+    // textAreaRef.current.select();
+    // document.execCommand("copy");
+    // e.target.focus();
   };
 
   const handleBackClick = (e) => {
@@ -48,7 +49,16 @@ const Transform = ({
          */}
         {/* {transform} */}
         {/* </textarea> */}
-        <pre>{transform}</pre>
+        {console.log(transform)}
+        {transform.status === 200 ? (
+          <div className="transform">
+            <pre ref={textAreaRef}>{transform.data}</pre>
+          </div>
+        ) : (
+          <div className="error">
+            <p>{transform.data}</p>
+          </div>
+        )}
       </TransformContent>
       <TransformNavigation>
         <button onClick={handleBackClick}>Back</button>
